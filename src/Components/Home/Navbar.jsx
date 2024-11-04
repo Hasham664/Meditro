@@ -1,90 +1,125 @@
+// components/Navbar.js
 "use client";
-import React from "react";
-export default function Navbar() {
-  return (
-    <div>
-      <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
-        <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-          <li className="flex items-center">
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Landwind
-            </span>
-          </li>
-          <div className="flex items-center lg:order-2">
-            <div className="hidden mt-2 mr-4 sm:inline-block">
-              <span></span>
-            </div>
 
-            <p
-              href="https://themesberg.com/product/tailwind-css/landing-page"
-              className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
+import { useState } from "react";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+export default function Navbar() {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setNavOpen(!navOpen);
+  };
+
+  return (
+    <nav className="text-black  ">
+      <div className="Mycontainer ">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="text-2xl font-bold">
+            <Link href="/">
+              <img
+                className="w-[60%] lg:w-full md:w-full"
+                src="/logo.png"
+                alt=""
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden tablet:flex lg:space-x-8 md:space-x-4">
+            <Link
+              href="/"
+              className="lg:text-xl md:text-lg text-[#3D3D3D]  hover:text-[#4CB6B6]"
             >
-              Download
-            </p>
-            <button
-              data-collapse-toggle="mobile-menu-2"
-              type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="mobile-menu-2"
-              aria-expanded="true"
+              Home
+            </Link>
+            <Link
+              href="/service"
+              className=" lg:text-xl md:text-lg text-[#3D3D3D]  hover:text-[#4CB6B6]"
             >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <svg
-                className="hidden w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
+              Service
+            </Link>
+            <Link
+              href="/Hospitality "
+              className="lg:text-xl md:text-l text-[#3D3D3D]g hover:text-[#4CB6B6]"
+            >
+              Hospitality
+            </Link>
+            <Link
+              href="/Travel"
+              className="lg:text-xl md:text-l text-[#3D3D3D]g hover:text-[#4CB6B6]"
+            >
+              Travel 
+            </Link>
+            <Link
+              href="/hospital"
+              className="lg:text-xl md:text-l text-[#3D3D3D]g hover:text-[#4CB6B6]"
+            >
+              Hospitals
+            </Link>
+          </div>
+
+          {/* Button */}
+          <div className="hidden tablet:block">
+            <button className="bg-gradient-to-r from-custom-blue to-custom-teal text-white lg:px-6 lg:py-3 md:px-4 md:py-2  rounded-lg :text-2xl md:text-xl">
+              Join us{" "}
             </button>
           </div>
-          <div
-            className="items-center justify-between w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
-          >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                <li
-                  className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
-                  aria-current="page"
-                >
-                  Home
-                </li>
-                <li className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                  Company
-                </li>
-                <li className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                  Marketplace
-                </li>
-                <li className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                  Features
-                </li>
-                <li className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                  Team
-                </li>
-                <li className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                  Contact
-                </li>
-            </ul>
+
+          {/* Mobile Menu Button */}
+          <div className="tablet:hidden">
+            <button onClick={toggleNav}>
+              {navOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {navOpen && (
+        <div className="tablet:hidden  bg-gradient-to-r from-custom-blue to-custom-teal text-white pb-12  transition-transform duration-300 ease-in-out">
+          <div className="flex flex-col items-center space-y-8  pt-12">
+            <Link
+              className=" lg:text-xl md:text-lg text-white   hover:text-[#4CB6B6]"
+              href="/"
+              onClick={toggleNav}
+            >
+              Home
+            </Link>
+            <Link
+              className=" lg:text-xl md:text-lg text-white  hover:text-[#4CB6B6]"
+              href="/service"
+              onClick={toggleNav}
+            >
+              Service
+            </Link>
+            <Link
+              className=" lg:text-xl md:text-lg text-white   hover:text-[#4CB6B6]"
+              href="/Hospitality "
+              onClick={toggleNav}
+            >
+              Hospitality
+            </Link>
+            <Link
+              className=" lg:text-xl md:text-lg text-white   hover:text-[#4CB6B6]"
+              href="/Travel"
+              onClick={toggleNav}
+            >
+              Travel 
+            </Link>
+            <Link
+              className=" lg:text-xl md:text-lg text-white   hover:text-[#4CB6B6]"
+              href="/hospital"
+              onClick={toggleNav}
+            >
+              Hospitals
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
+
